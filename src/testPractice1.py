@@ -125,6 +125,107 @@ from numpy.ma.core import size
 # print(a.sqrt_())
 # print(a)
 #######################################
+# print(torch.rand(2,2,1))
+# print(torch.rand(2,3))
+# print(torch.rand(2,2,1)+torch.rand(2,3))
+
+
+# a = torch.rand(2,2)
+# a = a*10
+#
+# print(a)
+#
+# print(a.floor())
+# print(a.ceil())
+# print(a.abs())
+# print(a.round())
+# print(a.trunc())
+# print(a.frac())
+# print(a%2)
+
+# print(torch.eq(torch.tensor([1,2]),torch.tensor(3)))
+# print(torch.equal(torch.tensor([[2,3],[1,2]]),torch.tensor([2,3])))
+# print(torch.ge(torch.tensor([1,3]),torch.tensor(3)))
+# print(torch.gt(torch.tensor([1,3]),torch.tensor(3)))
+# print(torch.le(torch.tensor([1,3]),torch.tensor(3)))
+# print(torch.lt(torch.tensor([1,3]),torch.tensor(3)))
+# print(torch.ne(torch.tensor([1,3]),torch.tensor(3)))
+# a = torch.randn(10)
+# print(torch.sort(a,descending=True,out=None)[0])
+# print(torch.sort(a, dim=0))
+# print(torch.topk(a, dim=0, k=2))
+# print(torch.kthvalue(a, dim=0,k=2,out=None))
+
+# print(torch.isfinite(torch.ones(5)))
+# print(torch.isinf(torch.ones(5)))
+# print(torch.isnan(torch.ones(5)))
+# a = torch.rand([2,3])
+# print(torch.isnan(a))
+# print(torch.isnan(a).sum())
+
+#######################################
+
+# a = torch.zeros(2,3)
+# b = torch.atan(a)
+# print(a)
+# print(b)
+#
+# a = torch.randn(5,5)
+# print(a)
+# print(torch.prod(a,dim=0))
+#
+# print(torch.histc(a, 6,0,1))
+# b = torch.randint(0,10,[2,10])
+# print(torch.bincount(b))
+
+# torch.manual_seed(1)
+# mean = torch.rand(1,2)
+# std = torch.rand(1,2)
+# print(torch.normal(mean,std))
+
+# a = torch.randn(2,1)
+# b = torch.randn(2,1)
+# print(a, b)
+# print(torch.dist(a, b,p=1)) # sum(|a-b|)
+# print(torch.dist(a,b,p=2)) # ((a-b)^2)^(1/2)
+# print(torch.dist(a,b,p=3)) # ((a-b)^3)^(1/3)
+#
+# print(torch.norm(a))
+# print(torch.norm(a,p=1))
+
+# a = torch.rand(2,2)*10
+# print(a)
+#
+# b = a.clamp(2,6)
+# print(b)
+# a = torch.rand(4,4)
+# b = torch.rand(4,4)
+# print(a)
+# print(b)
+
+# out = torch.where(a>0.5,a,b)
+# print(out)
+# out = torch.index_select(a,0,index=torch.tensor([0,3,2]))
+# print(out)
+
+# a = torch.linspace(1,16,16).view(4,4)
+# print(a)
+#
+# out = torch.gather(a,dim=-2,index=torch.tensor([[0,1,1,1],
+#                                                [0,1,2,2],
+#                                                [0,3,3,2]]))
+# print(out)
+# a = torch.linspace(1,16,16)
+# a = torch.tensor([[0,1,2,0],[2,3,0,1]])
+# print(a)
+# mask = torch.gt(a,8)
+# print(mask)
+# out = torch.masked_select(a,mask)
+# print(out)
+
+# out = torch.take(a,index=torch.tensor([0,15,13,10]))
+# out = torch.nonzero(a)
+# print(out)
 
 
 
