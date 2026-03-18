@@ -227,6 +227,47 @@ from numpy.ma.core import size
 # out = torch.nonzero(a)
 # print(out)
 
+#######################################
+# a = torch.zeros((2,4))
+# b = torch.ones((2,4))
+# a = torch.linspace(1,6,6).view(2,3)
+# b = torch.linspace(7,12,6).view(2,3)
+# print(a)
+# print(b)
+#
+# # out = torch.cat((a, b),dim=1)
+# out = torch.stack((a,b),dim=2)
+#
+# print(out, out.shape)
+#
+# a = torch.rand((3,4))
+# print(a)
+#
+# # out = torch.chunk(a, 2, 1)
+# out = torch.split(a,3,dim=0)
+# print(out)
+
+# a = torch.rand(1,2,3)
+# print(a)
+# print(a.shape)
+# out = torch.reshape(a,(3,2))
+# out = torch.transpose(a,0,1)
+# out = torch.unsqueeze(a,-1)
+# out = torch.unbind(a, dim=1)
+# out = torch.flip(a, dims=[1,2])
+# out = torch.rot90(a, 1, (2,1))
+
+# print(out, len(out))
+
+# a = torch.full((3,3), 5)
+# print(a)
+
+# import numpy as np
+# a = torch.from_numpy(np.ones((3,3,3)))
+# print(a)
+#
+# b = a.numpy()
+# print(b)
 
 
 
