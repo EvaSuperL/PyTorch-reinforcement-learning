@@ -318,3 +318,95 @@ from numpy.ma.core import size
 
 #######################################
 
+
+# data
+import numpy as np
+import re
+
+ff = open("src/data/housing.data", "r").readlines()
+data = []
+for item in ff:
+    out = re.sub(r"\s{2,}"," ",item).strip()
+    # print(out)
+    data.append(out.split(" "))
+
+data = np.array(data).astype(float)
+print(data.shape)
+
+y = data[:,-1]
+X = data[:,0:-1]
+print(y.shape)
+print(X.shape)
+
+y_train = y[0:496,...]
+y_test = y[496:,...]
+X_train = X[0:496, ...]
+X_test = X[496:, ...]
+
+# print(y_train.shape)
+# print(y_test.shape)
+# print(X_train.shape)
+# print(X_test.shape)
+
+# net
+class Net(torch.nn.Module):
+    def __init__(self,n_feature,n_output):
+        super(Net, self).__init__()
+        self.hidden = torch.nn.Linear(n_feature,100)
+        self.predict = torch.nn.Linear(100,n_output)
+
+    def forward(self, x):
+        out = self.hidden(x)
+        out = torch.relu(out)
+        out = self.predict(out)
+        return out
+
+net = Net(n_feature=13,n_output=1)
+
+# Loss
+loss_func = torch.nn.MSELoss()
+
+# optimizer
+
+optimizer = torch.optim.Adam(net.parameters(),lr=0.01)
+
+# training
+for i in range(10000):
+    x_data = torch.tensor(X_train,dtype=torch.float32)
+    y_data = torch.tensor(y_train,dtype=torch.float32)
+    # print(y_data.shape)
+
+    pred = net.forward(x_data)
+    # print(pred.shape)
+    pred = pred.squeeze()
+    loss = loss_func(pred, y_data)*0.001
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+    print(f"ite:{i}, loss:{loss}")
+    print(pred[0:10])
+    print(y_data[0:10])
+
+# test
+    x_test = torch.tensor(X_test,dtype=torch.float32)
+    y_test = torch.tensor(y_test,dtype=torch.float32)
+
+    pred = net.forward(x_test)
+    # print(pred.shape)
+    pred = pred.squeeze()
+    loss_test = loss_func(pred, y_test)*0.001
+
+    print(f"ite:{i}, loss_test:{loss_test}")
+    print(pred[0:10])
+    print(y_test[0:10])
+
+# plot
+
+# save model
+torch.save(net,"src/models/model.pkl")
+# torch.load("src/models/model.pkl")
+# torch.save(net.state_dict(),"src/models/params.pkl")
+# net.load_state_dict(torch.load("src/models/params.pkl"))
+#
